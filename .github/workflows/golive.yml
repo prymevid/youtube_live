@@ -73,5 +73,5 @@ jobs:
             -loop 1 -framerate 30 -i bg_blur.jpg \
             -framerate 30 -i trivia.svg \
             -stream_loop -1 -i audio_loop.wav \
-            -filter_complex "[0:v]scale=1080:1920,hue=h=mod(t*8\,360),eq=brightness=0.98:contrast=1.08,zoompan=z=1+0.01*sin(t/10):d=1:x=iw/2-(iw/zoom/2):y=ih/2-(ih/zoom/2):s=1080x1920:fps=30,format=yuv420p[bg];[1:v]scale=900:-1[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2[v];[2:a]aformat=channel_layouts=stereo,volume=0.8[a]" \
+            -filter_complex "[0:v]scale=1080:1920,hue=h=t*8,eq=brightness=0.98:contrast=1.08,zoompan=z=1+0.01*sin(t/10):d=1:x=iw/2-(iw/zoom/2):y=ih/2-(ih/zoom/2):s=1080x1920:fps=30,format=yuv420p[bg];[1:v]scale=900:-1[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2[v];[2:a]aformat=channel_layouts=stereo,volume=0.8[a]" \
             -map "[v]" -map "[a]" -c:v libx264 -preset veryfast -b:v 2500k -maxrate 2500k -bufsize 5000k -g 60 -c:a aac -b:a 128k -ar 44100 -t $TOTAL -f flv "rtmp://a.rtmp.youtube.com/live2/zhz6-63as-rd13-wd4b-8kvy"
