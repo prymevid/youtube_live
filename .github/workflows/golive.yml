@@ -33,10 +33,13 @@ jobs:
           echo "total=$TOTAL" >> $GITHUB_OUTPUT
           echo "Streaming for $TOTAL seconds"
 
-      - name: Install FFmpeg + SVG tools
+      # ---------- FAST DEPENDENCY INSTALL ----------
+      - name: Install FFmpeg + SVG tools (fast)
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y ffmpeg librsvg2-bin
+          export DEBIAN_FRONTEND=noninteractive
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg librsvg2-bin
+      # ---------------------------------------------
 
       - name: Get background
         run: |
