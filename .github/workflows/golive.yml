@@ -107,4 +107,4 @@ jobs:
             -loop 1 -framerate 30 -i trivia.png \
             -stream_loop -1 -i audio_loop.wav \
             -filter_complex "[0:v]hue=h=t*6,eq=brightness=0.98:contrast=1.05,format=yuv420p[bg];[1:v]format=rgba[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2:format=auto[v];[2:a]aformat=channel_layouts=stereo,volume=0.8[a]" \
-            -map "[v]" -map "[a]" -c:v libx264 -preset veryfast -b:v 2000k -maxrate 2000k -bufsize 4000k -pix_fmt yuv420p -g 60 -c:a aac -b:a 128k -ar 44100 -t $TOTAL -f flv "rtmp://a.rtmp.youtube.com/live2/0vky-mmwa-v8t9-j5x0-d6cj"
+            -map "[v]" -map "[a]" -c:v libx264 -preset veryfast -b:v 2000k -maxrate 2000k -bufsize 4000k -pix_fmt yuv420p -g 60 -c:a aac -b:a 128k -ar 44100 -t $TOTAL -f flv "rtmp://a.rtmp.youtube.com/live2/zhz6-63as-rd13-wd4b-8kvy"
