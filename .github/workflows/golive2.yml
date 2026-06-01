@@ -332,13 +332,15 @@ jobs:
           echo "song=$SONG" >> $GITHUB_OUTPUT
           echo "Using audio: $SONG"
 
-      - name: Stream to YouTube
+                - name: Stream to YouTube
         env:
-          YT_URL: ${{ secrets.YOUTUBE_STREAM_URL }}   # set as secret! Or hardcode
-        run: |
-          TOTAL=${{ steps.timing.outputs.total }}
-          SONG="${{ steps.audio.outputs.song }}"
-          ffmpeg -hide_banner -loglevel info \
+          YT_URL: ${{ secrets.YOUTUBE_STREAM_URL }}   # set in repo secrets
+          run: |
+           TOTAL=${{ steps.timing.outputs.total }}
+           SONG="${{ steps.audio.outputs.song }}"
+           # Use the full RTMP URL if the secret is set, otherwise fallback to hardcoded
+           STREAM_URL="${YT_URL:-rtmp://a.rtmp.youtube.com/live2/sjam-ar42-hmuk-jmg6-25ew}"
+           ffmpeg -hide_banner -loglevel info \
             -loop 1 -framerate 30 -i bg_blur.jpg \
             -loop 1 -framerate 30 -i quiz.png \
             -stream_loop -1 -i "$SONG" \
