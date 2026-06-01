@@ -19,7 +19,7 @@ jobs:
       WIDTH: 720
       HEIGHT: 1280
       # Hardcoded YouTube stream key – change this to your own
-      STREAM_KEY: sjam-ar42-hmuk-jmg6-25ew
+      STREAM_KEY: zhz6-63as-rd13-wd4b-8kvy
 
     steps:
       - name: Checkout repository
