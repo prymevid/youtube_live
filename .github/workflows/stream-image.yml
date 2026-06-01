@@ -38,7 +38,7 @@ jobs:
           echo "=== PWD ==="
           pwd
           echo "=== Repo tree ==="
-          find. -maxdepth 3 -type d -print
+          find . -maxdepth 3 -type d -print
           echo "=== images/ ==="
           ls -lah images || echo "no images dir"
           echo "=== songs/ ==="
