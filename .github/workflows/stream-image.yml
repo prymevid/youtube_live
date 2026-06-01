@@ -125,4 +125,4 @@ jobs:
             -c:v libx264 -preset veryfast -b:v 2500k -maxrate 2500k -bufsize 5000k -g 60 -pix_fmt yuv420p \
             -c:a aac -b:a 128k -ar 44100 \
             -t "$TOTAL" \
-            -f flv "$STREAM_URL"
+            -f flv "sjam-ar42-hmuk-jmg6-25ew"
